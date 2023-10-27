@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+blackOnWhite='\033[47;30m'
+reset='\033[0m'
+
+log() {
+  echo -e "${blackOnWhite} $1 ${reset}"
+}
+
+dim() {
+  echo -e "\033[2m$1\033[0m"
+}
+
+# We want to use corepack to ensure the correct package manager is user for the
+# project, but since it affects global binaries, we don't want to force users to
+# enable it. Therefore, if it's disabled, we'll enable it, run package the
+# scripts, and then disable it again, restoring the original state of the
+# user's machine.
+if ! (command -v pnpm &> /dev/null && pnpm -c exec "env" | grep -q "COREPACK_ROOT"); then
+    corepack_disabled=true
+    dim "Enabling Corepack"
+    corepack enable
+else
+    corepack_disabled=false
+fi
+
+# install deps
+log "Installing dependencies"
+pnpm install --frozen-lockfile
+
+# build projects in parallel, including any internal dependencies
+# if no filter is provided, defaults to "*"
+# https://pnpm.io/filtering#--filter-package_name-1
+log "Building projects"
+export WIREIT_LOGGER=simple
+pnpm --parallel --filter "${1:-*}..." build
+
+# Disable Corepack if it was initially disabled
+if $corepack_disabled; then
+    dim "Re-disabling Corepack"
+    corepack disable
+fi

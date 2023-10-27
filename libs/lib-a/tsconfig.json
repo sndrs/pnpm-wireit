@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"lib": ["ESNext", "dom"],
+		"outDir": "dist",
+		"noEmit": false,
+		"composite": true,
+		"incremental": true,
+		"rootDir": "src"
+	},
+	"files": ["src/index.ts"]
+}

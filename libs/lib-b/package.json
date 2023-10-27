@@ -1,0 +1,28 @@
+{
+	"name": "@guardian/lib-b",
+	"main": "dist/index.js",
+	"dependencies": {},
+	"devDependencies": {
+		"typescript": "^5.2.2",
+		"wireit": "^0.14.1"
+	},
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"command": "tsc --build --pretty",
+			"files": [
+				"tsconfig.json",
+				"src/**/*.ts",
+				"src/**/*.tsx",
+				"../../tsconfig.base.json"
+			],
+			"output": [
+				"dist/**/*",
+				".tsbuildinfo"
+			],
+			"clean": "if-file-deleted"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"baseUrl": ".",
+		"declaration": true,
+		"declarationMap": true,
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"noEmit": true,
+		"paths": {
+			"@guardian/lib-a": ["libs/lib-a/src/index.ts"],
+			"@guardian/lib-b": ["libs/lib-b/src/index.js"]
+		},
+		"target": "ESNext"
+	}
+}

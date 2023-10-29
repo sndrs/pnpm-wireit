@@ -14,8 +14,7 @@
 			"command": "tsc --build --pretty",
 			"files": [
 				"tsconfig.json",
-				"src/**/*.ts",
-				"src/**/*.tsx",
+				"src/**/*",
 				"../../tsconfig.base.json"
 			],
 			"output": [

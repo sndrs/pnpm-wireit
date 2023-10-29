@@ -1,6 +1,7 @@
 .wireit
 node_modules
 dist
+*.tsbuildinfo
 
 # Misc
 .DS_Store

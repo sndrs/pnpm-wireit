@@ -2,7 +2,7 @@
 
 > Example monorepo that uses [pnpm](https://pnpm.io) to manage packages and orchestrate tasks, [wireit](https://github.com/google/wireit) to handle output caching and follows GitHub's [Scripts to Rule Them All](https://github.blog/2015-06-30-scripts-to-rule-them-all/).
 >
-> It's an exploration of a closer-to-the-metal alternative to Nx, Turborepo et al.
+> It's an exploration of a lighter-touch alternative to Nx, Turborepo et al.
 
 ## How to use it
 

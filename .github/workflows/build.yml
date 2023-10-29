@@ -1,0 +1,22 @@
+name: Build
+on: [push, pull_request]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: pnpm/action-setup@v2
+            - uses: actions/setup-node@v3
+              with:
+                  node-version-file: '.nvmrc'
+                  cache: pnpm
+
+            # Set up GitHub Actions caching for Wireit.
+            - uses: google/wireit@setup-github-actions-caching/v1
+
+            # Install npm dependencies.
+            - run: pnpm install
+
+            # Run tests. Wireit will automatically use
+            # the GitHub Actions cache whenever possible.
+            - run: pnpm -r build

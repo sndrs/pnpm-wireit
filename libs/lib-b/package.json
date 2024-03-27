@@ -3,8 +3,8 @@
 	"main": "dist/index.js",
 	"dependencies": {},
 	"devDependencies": {
-		"typescript": "^5.3.3",
-		"wireit": "^0.14.1"
+		"typescript": "^5.4.3",
+		"wireit": "^0.14.4"
 	},
 	"scripts": {
 		"build": "wireit"
